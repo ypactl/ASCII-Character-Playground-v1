@@ -1,2 +1,3 @@
 # ASCII-Character-Playground-v1
+[THIS IS NOT FINISHED]
 This is only a simulation. You cannot interact with them yet...
