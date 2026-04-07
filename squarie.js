@@ -1,16 +1,7 @@
-document.documentElement.innerHTML=""
-const canvas = document.createElement('canvas')
-canvas.width = 750
-canvas.height = 750
-canvas.style.position = 'fixed'
-canvas.style.top = '50%'
-canvas.style.left = '50%'
-canvas.style.transform = 'translate(-50%, -50%)'
-canvas.style.border = '2px solid black'
-document.body.appendChild(canvas)
-ctx = canvas.getContext('2d')
-btnp=[]
-btnf=[]
+var canvas = document.getElementById("squarieSim")
+var ctx = canvas.getContext('2d')
+var btnp=[]
+var btnf=[]
 canvas.addEventListener('mousedown', function(e) {
     const rect = canvas.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -21,7 +12,7 @@ canvas.addEventListener('mousedown', function(e) {
         }
     }
 })
-b=0
+var b=0
 function mod(x, y) {
     return x-Math.floor(x/y)*y
 }
@@ -33,15 +24,15 @@ function fr(x,y,xs,ys,xo,yo,r) {
     ctx.fillRect(x-(xs/2-xo)*Math.pow(2,r), y-(ys/2-yo)/Math.pow(2,r)+750, xs*Math.pow(2, r), ys/Math.pow(2,r))
     ctx.fillRect(x-(xs/2-xo)*Math.pow(2,r)+750, y-(ys/2-yo)/Math.pow(2,r)+750, xs*Math.pow(2, r), ys/Math.pow(2,r))
 }
-obj=[]
+var obj=[]
 for (let i = 0; i < 10; i++) {
     obj.push(["blueberry", 750*Math.random(), 750*Math.random()])
 }
-sq=[[["#ffbf00", 0, 0, 50, 20, "#009eaa", 10, 0, 10, 20, "#ffbf00", -5, -16, 20, 2, "#ffbf00", -5, -24, 20, 2, "#009eaa", 10, -16, 10, 2, "#009eaa", 10, -24, 10, 2, "#ffbf00", -13, -20, 2, 16, "#ffbf00", -7, -20, 2, 16, "#ffbf00", -3, -20, 2, 16, "#ffbf00", 3, -20, 2, 16, "#009eaa", 7, -20, 2, 16, "#009eaa", 13, -20, -2, 16, "#ffffff", 0, 7, 2, 2, "#ffffff", 2, 4, 2, 4, "#ffffff", -2, 4, 2, 4, "#ffffff", -13, 6, 2, 4, "#ffffff", -11, 2, 2, 4, "#ffffff", -9, -2, 2, 4, "#ffffff", -7, -6, 2, 4, "#ffffff", -10, -7, 8, 2, "#ffffff", 7, 6, 2, 4, "#ffffff", 9, 2, 2, 4, "#ffffff", 11, -2, 2, 4, "#ffffff", 13, -6, 2, 4, "#ffffff", 10, -7, 8, 2], ["#ffbf00", 0, 0, 10, 20, "#ffbf00", 0, -16, 10, 2, "#ffbf00", 0, -24, 10, 2, "#ffbf00", -3, -20, 2, 20, "#ffbf00", 3, -20, 2, 20], ["#ffbf00", 0, 0, 50, 20, "#009eaa", -10, 0, 10, 20, "#ffbf00", 5, -16, 20, 2, "#ffbf00", 5, -24, 20, 2, "#009eaa", -10, -16, 10, 2, "#009eaa", -10, -24, 10, 2, "#009eaa", -13, -20, 2, 16, "#009eaa", -7, -20, 2, 16, "#ffbf00", -3, -20, 2, 16, "#ffbf00", 3, -20, 2, 16, "#ffbf00", 7, -20, 2, 16, "#ffbf00", 13, -20, 2, 16], ["#ffbf00", 0, 0, 10, 20, "#009eaa", 0, -16, 10, 2, "#009eaa", 0, -24, 10, 2, "#009eaa", -3, -20, 2, 20, "#009eaa", 3, -20, 2, 20]], [["#ffd635", 0, 0, 50, 20, "#ffffff", 0, 8, 2, 2, "#ffffff", 10, 5, 6, 6, "#ffd635", 10, 5, 2, 2, "#ffffff", -10, 5, 6, 6, "#ffd635", -10, 5, 2, 2, "#ffd635", -3.5, -15, 1, 8, "#ffd635", -2.5, -17.5, 1, 1, "#ffd635", 0, -18.5, 4, 1, "#ffd635", 2.5, -17.5, 1, 1, "#ffd635", 3.5, -14, 1, 6], ["#ffd635", 0, 0, 10, 20, "#ffd635", 0, -15, 1, 8], ["#ffd635", 0, 0, 50, 20, "#ffd635", 3.5, -15, 1, 8, "#ffd635", 2.5, -17.5, 1, 1, "#ffd635", 0, -18.5, 4, 1, "#ffd635", -2.5, -17.5, 1, 1, "#ffd635", -3.5, -14, 1, 6], ["#ffd635", 0, 0, 10, 20, "#ffd635", 0, -15, 1, 8]]]
-pos=[[0,275,375,0,0],[1,475,375,0,0]]
-sqM=[[0],[0]]
-M=["nothing", "follow"]
-Mf={
+var sq=[[["#ffbf00", 0, 0, 50, 20, "#009eaa", 10, 0, 10, 20, "#ffbf00", -5, -16, 20, 2, "#ffbf00", -5, -24, 20, 2, "#009eaa", 10, -16, 10, 2, "#009eaa", 10, -24, 10, 2, "#ffbf00", -13, -20, 2, 16, "#ffbf00", -7, -20, 2, 16, "#ffbf00", -3, -20, 2, 16, "#ffbf00", 3, -20, 2, 16, "#009eaa", 7, -20, 2, 16, "#009eaa", 13, -20, -2, 16, "#ffffff", 0, 7, 2, 2, "#ffffff", 2, 4, 2, 4, "#ffffff", -2, 4, 2, 4, "#ffffff", -13, 6, 2, 4, "#ffffff", -11, 2, 2, 4, "#ffffff", -9, -2, 2, 4, "#ffffff", -7, -6, 2, 4, "#ffffff", -10, -7, 8, 2, "#ffffff", 7, 6, 2, 4, "#ffffff", 9, 2, 2, 4, "#ffffff", 11, -2, 2, 4, "#ffffff", 13, -6, 2, 4, "#ffffff", 10, -7, 8, 2], ["#ffbf00", 0, 0, 10, 20, "#ffbf00", 0, -16, 10, 2, "#ffbf00", 0, -24, 10, 2, "#ffbf00", -3, -20, 2, 20, "#ffbf00", 3, -20, 2, 20], ["#ffbf00", 0, 0, 50, 20, "#009eaa", -10, 0, 10, 20, "#ffbf00", 5, -16, 20, 2, "#ffbf00", 5, -24, 20, 2, "#009eaa", -10, -16, 10, 2, "#009eaa", -10, -24, 10, 2, "#009eaa", -13, -20, 2, 16, "#009eaa", -7, -20, 2, 16, "#ffbf00", -3, -20, 2, 16, "#ffbf00", 3, -20, 2, 16, "#ffbf00", 7, -20, 2, 16, "#ffbf00", 13, -20, 2, 16], ["#ffbf00", 0, 0, 10, 20, "#009eaa", 0, -16, 10, 2, "#009eaa", 0, -24, 10, 2, "#009eaa", -3, -20, 2, 20, "#009eaa", 3, -20, 2, 20]], [["#ffd635", 0, 0, 50, 20, "#ffffff", 0, 8, 2, 2, "#ffffff", 10, 5, 6, 6, "#ffd635", 10, 5, 2, 2, "#ffffff", -10, 5, 6, 6, "#ffd635", -10, 5, 2, 2, "#ffd635", -3.5, -15, 1, 8, "#ffd635", -2.5, -17.5, 1, 1, "#ffd635", 0, -18.5, 4, 1, "#ffd635", 2.5, -17.5, 1, 1, "#ffd635", 3.5, -14, 1, 6], ["#ffd635", 0, 0, 10, 20, "#ffd635", 0, -15, 1, 8], ["#ffd635", 0, 0, 50, 20, "#ffd635", 3.5, -15, 1, 8, "#ffd635", 2.5, -17.5, 1, 1, "#ffd635", 0, -18.5, 4, 1, "#ffd635", -2.5, -17.5, 1, 1, "#ffd635", -3.5, -14, 1, 6], ["#ffd635", 0, 0, 10, 20, "#ffd635", 0, -15, 1, 8]]]
+var pos=[[0,275,375,0,0],[1,475,375,0,0]]
+var sqM=[[0],[0]]
+var M=["nothing", "follow"]
+var Mf={
     "nothing": (i) => {
         if (Math.random() < 0.004) {
             pos[i][3] += (Math.random()*2-1)*10
@@ -87,6 +78,5 @@ function a() {
         fr(obj[i][1]-1, obj[i][2]-1, 2, 2, 0, 0, 0)
     }
     b++
-    requestAnimationFrame(a)
 }
-a()
+setInterval(a, 1)
